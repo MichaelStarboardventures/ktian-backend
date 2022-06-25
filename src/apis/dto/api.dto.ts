@@ -6,6 +6,9 @@ export enum Custom {
 }
 
 export class ApiDto {
+  @ApiProperty()
+  id: number;
+
   @ApiProperty({ type: String, description: 'Apis name' })
   name: string;
 

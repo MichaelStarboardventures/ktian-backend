@@ -9,7 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { PageService } from './pages.service';
-import { CreatePageDto, UpdatePageDto, ListDTO } from './dto';
+import { CreatePageDto, UpdatePageDto, ListDTO, PageDto } from './dto';
 import { ApiQuery, ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('api/pages')
@@ -19,7 +19,7 @@ export class PageController {
 
   @Post()
   @ApiOperation({ summary: 'create a page' })
-  @ApiResponse({ status: 200, type: CreatePageDto })
+  @ApiResponse({ status: 200, type: PageDto })
   create(@Body() createPageDto: CreatePageDto) {
     return this.pageService.create(createPageDto);
   }
@@ -28,28 +28,28 @@ export class PageController {
   @ApiOperation({ summary: 'get all page' })
   @ApiQuery({ name: 'page', required: true })
   @ApiQuery({ name: 'pageSize', required: true })
-  @ApiResponse({ status: 200, type: [CreatePageDto] })
+  @ApiResponse({ status: 200, type: [PageDto] })
   findAll(@Query() listDto: ListDTO) {
     return this.pageService.findAll(listDto);
   }
 
   @Get(':id')
   @ApiOperation({ summary: 'get a page' })
-  @ApiResponse({ status: 200, type: CreatePageDto })
+  @ApiResponse({ status: 200, type: PageDto })
   findOne(@Param('id') id: string) {
     return this.pageService.findOne(+id);
   }
 
   @Put(':id')
   @ApiOperation({ summary: 'update a page' })
-  @ApiResponse({ status: 200, type: UpdatePageDto })
+  @ApiResponse({ status: 200, type: PageDto })
   update(@Body() updatePageDto: UpdatePageDto, @Param('id') id: string) {
     return this.pageService.update(updatePageDto, +id);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'delete a page' })
-  @ApiResponse({ status: 200, type: null })
+  @ApiResponse({ status: 200, type: PageDto })
   remove(@Param('id') id: string) {
     return this.pageService.remove(+id);
   }

@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApisModule } from '../apis/apis.module';
 import { PagesModule } from '../pages/pages.module';
 import { ComponentsModule } from '../components/components.module';
+import { RoutesModule } from '../routes/routes.module';
 
 const env = process.env.NODE_ENV;
 
@@ -35,6 +36,7 @@ const mysqlConfig = {
     }),
     ApisModule,
     PagesModule,
+    RoutesModule,
     ComponentsModule,
   ],
   controllers: [AppController],

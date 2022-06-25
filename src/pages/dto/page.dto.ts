@@ -6,6 +6,9 @@ export enum MainPage {
 }
 
 export class PageDto {
+  @ApiProperty()
+  id: number;
+
   @ApiProperty({
     type: String,
     description: 'Page string data',

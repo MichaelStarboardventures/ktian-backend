@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "pangu",
+  "name": "ktian-backend",
   "builds": [
     {
       "src": "dist/main.js",
